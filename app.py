@@ -58,5 +58,5 @@ if gerar:
         st.image(banner, use_column_width=True)
         st.markdown("### 📝 Legenda pronta")
         st.text_area("", value=legenda, height=160, label_visibility="collapsed")
-        st.download_button("📥 BAIXAR IMAGEM", data=banner, file_name=f"WConnect_{nome_produto.replace(' ','_')}_{formato_chave}.png", mime="image/png", use_container_width=True)=
+        st.download_button("BAIXAR IMAGEM", data=banner, file_name=f"WConnect_{nome_produto.replace(' ', '_')}_{formato_chave}.png", mime="image/png", use_container_width=True)
 
