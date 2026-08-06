@@ -1,0 +1,51 @@
+@@ -0,0 +1,44 @@
+{
+  "versao_wcds": "1.4.0",
+  "cores_fixas": {
+    "fundo_principal": "#121212",
+    "cor_rodape": "#FFFFFF",
+    "cor_selo": "#FFC300",
+    "texto_primario": "#FFFFFF",
+    "texto_secundario": "#E0E0E0"
+  },
+  "categorias": {
+    "Tecnologia": {"cor_primaria": "#00F5D4", "estilo_visual": "Tech futurista neon", "glow_intensity": 25},
+    "Informática": {"cor_primaria": "#2B2D42", "estilo_visual": "Grafite prata profissional", "glow_intensity": 15},
+    "Ferramentas": {"cor_primaria": "#D68910", "estilo_visual": "Robusta industrial âmbar", "glow_intensity": 20},
+    "Casa": {"cor_primaria": "#87A96B", "estilo_visual": "Verde sálvia acolhedor", "glow_intensity": 18},
+    "Áudio": {"cor_primaria": "#A4145A", "estilo_visual": "Magenta profundo imersivo", "glow_intensity": 22},
+    "Games": {"cor_primaria": "#39FF14", "estilo_visual": "Neon verde gamer", "glow_intensity": 30},
+    "Cozinha": {"cor_primaria": "#C1502E", "estilo_visual": "Terracota quente", "glow_intensity": 18},
+    "Eletrodomésticos": {"cor_primaria": "#4A6572", "estilo_visual": "Azul petróleo clean", "glow_intensity": 15},
+    "Automotivo": {"cor_primaria": "#E63946", "estilo_visual": "Vermelho potência", "glow_intensity": 25},
+    "Escritório": {"cor_primaria": "#1B4965", "estilo_visual": "Azul profundo corporativo", "glow_intensity": 12},
+    "Lifestyle": {"cor_primaria": "#0B6E4F", "estilo_visual": "Verde esmeralda premium", "glow_intensity": 20},
+    "Promoções": {"cor_primaria": "#FFC300", "estilo_visual": "Ouro urgência destaque", "glow_intensity": 28}
+  },
+  "posicoes": {
+    "logo": {"x": 0.5, "y": 0.08},
+    "selo": {"x": 0.92, "y": 0.06},
+    "produto": {"x": 0.5, "y": 0.38},
+    "titulo": {"x": 0.5, "y": 0.58},
+    "preco": {"x": 0.5, "y": 0.68},
+    "desconto": {"x": 0.5, "y": 0.75},
+    "beneficios": {"x": 0.5, "y": 0.82},
+    "rodape": {"x": 0.5, "y": 0.95}
+  },
+  "formatos": {
+    "feed": {"largura": 1080, "altura": 1080},
+    "stories": {"largura": 1080, "altura": 1920}
+  },
+  "ativos": {
+    "logo": "",
+    "selo": "",
+    "fonte": "",
+    "texto_rodape": "W CONNECT — TECNOLOGIA QUE TE ACOMPANHA"
+  }
+}
+
+
+
+
+
+
