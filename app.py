@@ -1,62 +1,46 @@
-import streamlit as st
-from PIL import Image
-from banner_composer import gerar_banner, gerar_legenda, CONFIG
-
-st.set_page_config(
-    page_title="W Connect | Banner",
-    page_icon="🚀",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
-
-st.markdown("""
-<style>
-    * { -webkit-tap-highlight-color: transparent; }
-    .stApp { background-color: #121212; max-width: 480px; margin: 0 auto; }
-    h1 { font-size: 1.6rem !important; text-align: center; }
-    p, label { color: #fff !important; font-size: 0.95rem !important; }
-    .stTextInput > div > div > input, .stTextArea > div > textarea, .stSelectbox > div > div {
-        background-color: #1E1E1E !important; color: #fff !important; border: 1px solid #333 !important;
-        border-radius: 12px !important; padding: 14px !important; font-size: 16px !important;
-    }
-    .stButton > button {
-        background: linear-gradient(90deg, #00F5D4, #00D4AA); color: #000 !important; font-weight: 900 !important;
-        height: 4.5rem !important; border-radius: 16px !important; font-size: 20px !important;
-        box-shadow: 0 4px 12px rgba(0,245,212,0.25); border: none;
-    }
-    .stButton > button:active { transform: scale(0.97); }
-    hr { border-color: #2a2a2a; margin: 1.2rem 0; }
-    header, footer, #MainMenu { display: none; }
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown("<h1>🚀 W Connect</h1><p style='text-align:center; color:#999;'>Gerador de Banners v1.4.0</p>", unsafe_allow_html=True)
-
-with st.form("form_banner", border=False):
-    categorias = list(CONFIG["categorias"].keys())
-    categoria = st.selectbox("📂 Categoria", categorias)
-    nome_produto = st.text_input("📦 Nome do Produto", placeholder="ex: FONE BLUETOOTH PRO 5.0")
-    preco = st.text_input("💰 Preço (sem R$)", placeholder="ex: 189,90")
-    desconto = st.text_input("🔥 Desconto (opcional)", placeholder="ex: 25% OFF")
-    beneficios = st.text_area("✨ Benefícios (1 por linha)", placeholder="Envio Grátis\nGarantia 1 Ano", height=100)
-    imagem_produto = st.file_uploader("📷 Foto do Produto", type=["png", "jpg", "jpeg"])
-    formato = st.radio("📐 Formato", ["Feed 1:1", "Stories 9:16"], horizontal=True)
-    gerar = st.form_submit_button("🎨 GERAR BANNER", use_container_width=True, type="primary")
-
-if gerar:
-    if not nome_produto.strip() or not preco.strip() or not imagem_produto:
-        st.error("❌ Preencha nome, preço e envie a foto!")
-    else:
-        with st.spinner("🎨 Criando sua arte..."):
-            ben_list = [b.strip() for b in beneficios.strip().split("\n") if b.strip()]
-            img = Image.open(imagem_produto)
-            formato_chave = "feed" if "Feed" in formato else "stories"
-            banner = gerar_banner(categoria, nome_produto, preco, desconto, ben_list, img, formato_chave)
-            legenda = gerar_legenda(nome_produto, preco, desconto, ben_list, categoria)
-        st.success("✅ Pronto! Arte criada!")
-        st.divider()
-        st.image(banner, use_column_width=True)
-        st.markdown("### 📝 Legenda pronta")
-        st.text_area("", value=legenda, height=160, label_visibility="collapsed")
-        st.download_button("BAIXAR IMAGEM", data=banner, file_name=f"WConnect_{nome_produto.replace(' ', '_')}_{formato_chave}.png", mime="image/png", use_container_width=True)
+@@ -0.0 +1.44 @@
+{
+  “wcds_version”: “1.4.0”,
+  “fixed_colors”: {
+    “main_background”: “#121212”,
+    “footer_color”: “#FFFFFF”,
+    “logo_color”: “#FFC300”,
+    “primary_text”: “#FFFFFF”,
+    “secondary_text”: “#E0E0E0”
+  },
+  “categories”: {
+    “Technology”: {“primary_color”: “#00F5D4”, ‘visual_style’: “Futuristic Neon Tech”, “glow_intensity”: 25},
+    “Computing”: {“primary_color”: “#2B2D42”, ‘visual_style’: “Professional silver graphite”, “glow_intensity”: 15},
+    “Tools”: {“primary_color”: “#D68910”, ‘visual_style’: “Robust industrial amber”, “glow_intensity”: 20},
+    “Home”: {“primary_color”: “#87A96B”, ‘visual_style’: “Cozy Sage Green”, “glow_intensity”: 18},
+    “Audio”: {“primary_color”: “#A4145A”, ‘visual_style’: “Immersive Deep Magenta”, “glow_intensity”: 22},
+    “Games”: {“primary_color”: “#39FF14”, ‘visual_style’: “Gamer Neon Green”, “glow_intensity”: 30},
+    “Kitchen”: {“primary_color”: “#C1502E”, ‘visual_style’: “Warm Terracotta”, “glow_intensity”: 18},
+    “Appliances”: {“primary_color”: “#4A6572”, ‘visual_style’: “Clean petrol blue”, “glow_intensity”: 15},
+    “Automotive”: {“primary_color”: “#E63946”, ‘visual_style’: “Power Red”, “glow_intensity”: 25},
+    “Office”: {“primary_color”: “#1B4965”, ‘visual_style’: “Deep Corporate Blue”, “glow_intensity”: 12},
+    “Lifestyle”: {“primary_color”: “#0B6E4F”, ‘visual_style’: “Premium Emerald Green”, “glow_intensity”: 20},
+    “Promotions”: {“primary_color”: “#FFC300”, ‘visual_style’: “Highlighted Urgent Gold”, “glow_intensity”: 28}
+  },
+  “positions”: {
+    “logo”: {‘x’: 0.5, “y”: 0.08},
+    “badge”: {‘x’: 0.92, “y”: 0.06},
+    “product”: {‘x’: 0.5, “y”: 0.38},
+    “title”: {‘x’: 0.5, “y”: 0.58},
+    “price”: {‘x’: 0.5, “y”: 0.68},
+    “discount”: {‘x’: 0.5, “y”: 0.75},
+    “benefits”: {‘x’: 0.5, “y”: 0.82},
+    “footer”: {‘x’: 0.5, “y”: 0.95}
+  },
+  “formats”: {
+    “feed”: {‘width’: 1080, “height”: 1080},
+    “stories”: {‘width’: 1080, “height”: 1920}
+  },
+  “assets”: {
+    “logo”: “”,
+    “badge”: “”,
+    “font”: “”,
+    “footer_text”: “W CONNECT — TECHNOLOGY THAT GOES WITH YOU”
+  }
+}
 
