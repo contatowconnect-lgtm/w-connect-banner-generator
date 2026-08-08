@@ -2,6 +2,7 @@ import json
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from io import BytesIO
 
+
 with open("wcds_config.json", "r", encoding="utf-8") as f:
     CONFIG = json.load(f)
 
