@@ -40,7 +40,7 @@ if st.sidebar.button("🖼️ Gerar Banner", type="primary", use_container_width
                     badge_text=badge_text
                 )
                 st.success("✅ Banner gerado com sucesso!")
-                st.image(banner, use_column_width=True)
+                st.image(banner, use_container_width=True)
 
                 buf = io.BytesIO()
                 banner.save(buf, format="PNG")
